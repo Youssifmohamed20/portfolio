@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Youssif Mohamed | Junior Data Scientist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07061a;--indigo:#5b4bff;--pink:#ff2e93;--cyan:#22e4ff;--amber:#ffb627;--text:#e9e8ff;--mute:#9a98c4;--card:rgba(255,255,255,.04);--line:rgba(255,255,255,.1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:400 16px/1.65 'DM Sans',sans-serif;overflow-x:hidden;cursor:none}
+h1,h2,h3,.logo{font-family:'Syne',sans-serif}
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#0b0a24}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--indigo),var(--pink));border-radius:8px}
+a{color:inherit;text-decoration:none;cursor:none}
+#bg{position:fixed;inset:0;z-index:0}
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#dot,#ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-100px,-100px)}
+#dot{width:8px;height:8px;margin:-4px;background:var(--cyan);box-shadow:0 0 14px 4px var(--cyan)}
+#ring{width:38px;height:38px;margin:-19px;border:1.5px solid var(--pink);transition:width .25s,height .25s,margin .25s,border-color .25s}
+#ring.big{width:60px;height:60px;margin:-30px;border-color:var(--amber)}
+#loader{position:fixed;inset:0;z-index:10000;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .6s,visibility .6s}
+#loader.hide{opacity:0;visibility:hidden}
+#loader b{font:800 72px 'Syne';background:linear-gradient(90deg,var(--indigo),var(--pink),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.bar{width:220px;height:4px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--indigo),var(--pink),var(--amber),var(--cyan));background-size:200%;animation:load 1.9s ease forwards,flow 1s linear infinite}
+@keyframes load{to{width:100%}}@keyframes flow{to{background-position:200% 0}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:rgba(10,9,35,.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--line);transform:translateY(-100%);animation:slide .8s 2.1s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes slide{to{transform:none}}
+.logo{font-weight:800;font-size:20px;background:linear-gradient(90deg,var(--pink),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav ul{display:flex;gap:26px;list-style:none}
+nav li a{position:relative;font-size:14px;color:var(--mute);padding:4px 0;transition:color .3s}
+nav li a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,var(--pink),var(--cyan));transition:width .3s}
+nav li a:hover{color:#fff}nav li a:hover::after{width:100%}
+main{position:relative;z-index:2}
+section{padding:110px 5vw 40px;max-width:1180px;margin:auto}
+h2{font-size:clamp(30px,4vw,44px);margin-bottom:36px;font-weight:700}
+h2 span{background:linear-gradient(90deg,var(--indigo),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero{min-height:100vh;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;padding-top:90px}
+.tag{display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border:1px solid var(--line);border-radius:30px;background:var(--card);font-size:14px;color:var(--mute)}
+.tag i{width:9px;height:9px;border-radius:50%;background:#3dffa0;box-shadow:0 0 10px #3dffa0;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{transform:scale(1.5);opacity:.5}}
+.hero h1{font-size:clamp(46px,8vw,92px);line-height:1;margin:22px 0 14px;font-weight:800;background:linear-gradient(100deg,var(--indigo),var(--pink),var(--amber),var(--cyan),var(--indigo));background-size:300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
+@keyframes shimmer{to{background-position:300% 0}}
+.sub{font:600 clamp(18px,2.4vw,26px) 'Syne';color:var(--cyan)}
+.lead{color:var(--mute);max-width:520px;margin:18px 0 30px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:13px 28px;border-radius:40px;font-weight:700;transition:transform .3s,box-shadow .3s}
+.btn.p{background:linear-gradient(90deg,var(--indigo),var(--pink));box-shadow:0 8px 30px rgba(255,46,147,.3)}
+.btn.s{border:1.5px solid var(--cyan);color:var(--cyan)}
+.btn:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(34,228,255,.35)}
+.stage{position:relative;display:grid;place-items:center;perspective:900px;min-height:460px}
+.orb{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,var(--pink),var(--indigo) 55%,transparent 70%);filter:blur(60px);opacity:.55;animation:breathe 5s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.2);opacity:.8}}
+.card3d{position:relative;width:300px;padding:34px 26px;border-radius:26px;background:rgba(18,16,55,.7);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(14px);text-align:center;transform-style:preserve-3d;animation:spin3d 9s ease-in-out infinite}
+@keyframes spin3d{0%,100%{transform:rotateY(-16deg) rotateX(6deg) translateY(0)}50%{transform:rotateY(16deg) rotateX(-4deg) translateY(-18px)}}
+.av{position:relative;width:110px;height:110px;margin:0 auto 18px;display:grid;place-items:center}
+.av::before{content:"";position:absolute;inset:-10px;border-radius:50%;border:2px dashed var(--amber);animation:rot 14s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.av b{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;font:800 38px 'Syne';background:linear-gradient(135deg,var(--indigo),var(--pink))}
+.card3d h3{font-size:20px}.card3d p{color:var(--mute);font-size:14px;margin-bottom:20px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;border-top:1px solid var(--line);padding-top:16px}
+.stats b{display:block;font:800 26px 'Syne';color:var(--amber)}.stats small{font-size:11px;color:var(--mute);line-height:1.2;display:block}
+.sk{display:grid;grid-template-columns:1fr 1fr;gap:20px 50px;margin-bottom:46px}
+.sk div div{display:flex;justify-content:space-between;font-size:14px;margin-bottom:7px}
+.track{height:8px;border-radius:8px;background:var(--line);overflow:hidden}
+.fill{position:relative;height:100%;width:0;border-radius:8px;background:linear-gradient(90deg,var(--indigo),var(--pink));transition:width 1.4s cubic-bezier(.2,.8,.2,1);overflow:hidden}
+.fill::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.6),transparent 70%);transform:translateX(-120%)}
+.fill.done::after{animation:sweep 1.2s ease 1}
+@keyframes sweep{to{transform:translateX(120%)}}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:8px 16px;border-radius:30px;border:1px solid var(--line);background:var(--card);font-size:14px;transition:transform .3s,border-color .3s,box-shadow .3s}
+.chip:hover{transform:translateY(-8px);border-color:var(--cyan);box-shadow:0 10px 24px rgba(34,228,255,.2)}
+.tl{position:relative;padding-left:34px}
+.tl::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px;background:linear-gradient(var(--indigo),var(--pink),var(--amber),var(--cyan),var(--indigo));background-size:100% 300%;animation:flowy 5s linear infinite}
+@keyframes flowy{to{background-position:0 300%}}
+.job{position:relative;padding:24px 26px;margin-bottom:24px;border-radius:18px;background:var(--card);border:1px solid var(--line);transition:transform .35s,box-shadow .35s,border-color .35s}
+.job::before{content:"";position:absolute;left:-41px;top:30px;width:13px;height:13px;border-radius:50%;background:var(--pink);box-shadow:0 0 12px var(--pink)}
+.job:hover{transform:translateX(12px);border-color:var(--pink);box-shadow:0 0 34px rgba(255,46,147,.25)}
+.job h3{font-size:20px}.job .co{color:var(--cyan);font-weight:500}.job .meta{color:var(--mute);font-size:13px;margin:4px 0 10px}
+.job li{margin-left:18px;color:#cfcdf2;margin-bottom:5px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.badges span{font-size:12px;padding:4px 12px;border-radius:20px;background:rgba(255,182,39,.12);color:var(--amber);border:1px solid rgba(255,182,39,.3)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.proj{position:relative;padding:28px 24px;border-radius:18px;background:var(--card);border:1px solid var(--line);overflow:hidden;transition:transform .35s,box-shadow .35s}
+.proj::before{content:"";position:absolute;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--indigo),var(--pink),var(--cyan));transform:scaleX(0);transform-origin:left;transition:transform .5s}
+.proj:hover{transform:translateY(-10px);box-shadow:0 20px 44px rgba(91,75,255,.3)}.proj:hover::before{transform:scaleX(1)}
+.proj .em{font-size:38px;margin-bottom:10px}.proj h3{font-size:19px;margin-bottom:8px}.proj p{color:var(--mute);font-size:15px;margin-bottom:16px}
+.proj .badges span{background:rgba(34,228,255,.1);color:var(--cyan);border-color:rgba(34,228,255,.3)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.box{padding:26px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.box h3{font-size:19px;margin-bottom:6px}.box .co{color:var(--cyan)}.box .meta{color:var(--mute);font-size:14px}
+.score{display:inline-block;margin-top:12px;padding:5px 14px;border-radius:20px;background:rgba(255,46,147,.14);color:var(--pink);font-size:13px;font-weight:700}
+.lang{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+.lang span{padding:10px 20px;border-radius:30px;font-weight:700;background:linear-gradient(90deg,var(--indigo),var(--pink));opacity:0;transform:scale(.6);transition:opacity .6s,transform .6s cubic-bezier(.3,1.6,.5,1)}
+.in .lang span{opacity:1;transform:none}.in .lang span+span{transition-delay:.25s}
+.mq{overflow:hidden;padding:26px 0;margin-top:90px;border-block:1px solid var(--line);position:relative;z-index:2;background:rgba(7,6,26,.6)}
+.mq div{display:flex;gap:56px;width:max-content;animation:marq 28s linear infinite}
+.mq span{font:700 20px 'Syne';color:var(--mute);white-space:nowrap}
+.mq span:nth-child(3n+1){color:var(--cyan)}.mq span:nth-child(3n+2){color:var(--pink)}.mq span:nth-child(3n){color:var(--amber)}
+@keyframes marq{to{transform:translateX(-50%)}}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.ci{display:flex;gap:16px;align-items:center;padding:18px 22px;margin-bottom:14px;border-radius:16px;background:var(--card);border:1px solid var(--line);transition:transform .3s,border-color .3s}
+.ci:hover{transform:translateX(14px);border-color:var(--cyan)}.ci em{font-style:normal;font-size:24px}.ci small{display:block;color:var(--mute);font-size:12px}
+.pulse{position:relative;display:grid;place-items:center;min-height:340px}
+.pulse b{position:relative;z-index:2;width:130px;height:130px;border-radius:50%;display:grid;place-items:center;font:800 44px 'Syne';background:linear-gradient(135deg,var(--indigo),var(--pink));animation:pop 2.4s ease-in-out infinite}
+@keyframes pop{50%{transform:scale(1.08);box-shadow:0 0 50px var(--pink)}}
+.pulse i{position:absolute;width:130px;height:130px;border-radius:50%;border:2px solid var(--cyan);animation:ripple 3.6s ease-out infinite;opacity:0}
+.pulse i:nth-child(2){animation-delay:1.2s;border-color:var(--pink)}.pulse i:nth-child(3){animation-delay:2.4s;border-color:var(--amber)}
+@keyframes ripple{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.2);opacity:0}}
+footer{position:relative;z-index:2;text-align:center;padding:40px 5vw;color:var(--mute);font-size:14px}
+.rv{opacity:0;transition:opacity .9s,transform .9s cubic-bezier(.2,.8,.2,1)}
+.up{transform:translateY(40px)}.lf{transform:translateX(-60px)}.rt{transform:translateX(60px)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:860px){
+ .hero,.two,.contact,.sk{grid-template-columns:1fr}.grid{grid-template-columns:1fr}
+ nav ul{gap:14px}nav li a{font-size:12px}.logo{font-size:16px}
+ .stage{min-height:420px}
+}
+@media(max-width:560px){nav li:nth-child(n+4){display:none}}
+@media(hover:none){body,a{cursor:auto}#dot,#ring{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important;transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<div id="loader"><b>YM</b><div class="bar"><i></i></div></div>
+<canvas id="bg"></canvas><div class="noise"></div><div id="dot"></div><div id="ring"></div>
+
+<nav>
+ <a class="logo" href="#home">Youssif Mohamed</a>
+ <ul>
+  <li><a href="#skills">Skills</a></li><li><a href="#experience">Experience</a></li><li><a href="#projects">Projects</a></li><li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li>
+ </ul>
+</nav>
+
+<main>
+<section class="hero" id="home">
+ <div>
+  <span class="tag rv up"><i></i>Available for junior data science roles</span>
+  <h1 class="rv up">Youssif Mohamed</h1>
+  <div class="sub rv up">Junior Data Scientist</div>
+  <p class="lead rv up">I build and evaluate predictive models, clean and explore data, and turn raw datasets into clear insights, using Python, SQL, scikit-learn, NLP and Apache Spark.</p>
+  <div class="btns rv up"><a class="btn p" href="#projects">View my projects</a><a class="btn s" href="#contact">Get in touch</a></div>
+ </div>
+ <div class="stage rv rt">
+  <div class="orb"></div>
+  <div class="card3d">
+   <div class="av"><b>YM</b></div>
+   <h3>Youssif Mohamed</h3><p>Junior Data Scientist</p>
+   <div class="stats"><div><b>3</b><small>ML &amp; NLP projects</small></div><div><b>2</b><small>Internships</small></div><div><b>5</b><small>Trainings &amp; certificates</small></div></div>
+  </div>
+ </div>
+</section>
+
+<div class="mq"><div id="mq"></div></div>
+
+<section id="skills">
+ <h2 class="rv up">Skills &amp; <span>tools</span></h2>
+ <div class="sk" id="sk"></div>
+ <div class="chips" id="chips"></div>
+</section>
+
+<section id="experience">
+ <h2 class="rv up">Experience &amp; <span>internships</span></h2>
+ <div class="tl">
+  <div class="job rv lf">
+   <h3>Junior Data Scientist</h3><div class="co">Academic Projects</div><div class="meta">Sep 2024 – Present</div>
+   <ul><li>Built end-to-end machine learning pipelines for classification and prediction tasks using Python, scikit-learn, pandas, and NumPy.</li><li>Applied preprocessing, EDA, feature engineering, and model evaluation to improve predictive performance.</li><li>Developed NLP and Deep Learning academic projects, communicating results through clear visual reports.</li></ul>
+   <div class="badges"><span>ML pipelines</span><span>Feature engineering</span><span>Model evaluation</span></div>
+  </div>
+  <div class="job rv lf">
+   <h3>Data Science &amp; AI Track</h3><div class="co">Information Technology Institute (ITI)</div><div class="meta">Jul 2024 – Aug 2024 · Cairo University Branch</div>
+   <ul><li>Trained in data analysis, data preprocessing, machine learning, deep learning, and model validation using Python.</li></ul>
+   <div class="badges"><span>Internship</span><span>Deep learning</span><span>Model validation</span></div>
+  </div>
+  <div class="job rv lf">
+   <h3>NLP Track</h3><div class="co">National Telecommunication Institute (NTI)</div><div class="meta">Aug 2024 – Sep 2024</div>
+   <ul><li>Applied core NLP concepts including text preprocessing, vectorization, and text classification workflows using Python.</li></ul>
+   <div class="badges"><span>Internship</span><span>Vectorization</span><span>Text classification</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="projects">
+ <h2 class="rv up">Selected <span>projects</span></h2>
+ <div class="grid">
+  <div class="proj rv up"><div class="em">💳</div><h3>Customer Credit Analysis</h3><p>Classification models that assess credit risk, analyze payment behavior, and predict loan approval outcomes.</p><div class="badges"><span>Python</span><span>scikit-learn</span><span>Classification</span></div></div>
+  <div class="proj rv up"><div class="em">📉</div><h3>Telecom Customer Churn Analysis</h3><p>A churn prediction model built from customer behavior data, with EDA, feature selection, and model evaluation.</p><div class="badges"><span>pandas</span><span>EDA</span><span>Feature selection</span></div></div>
+  <div class="proj rv up"><div class="em">⚖️</div><h3>Legal Chatbot (Arabic)</h3><p>An Arabic legal chatbot using retrieval-based and generative NLP techniques to answer legal terminology queries.</p><div class="badges"><span>Arabic NLP</span><span>Retrieval</span><span>Generative</span></div></div>
+ </div>
+</section>
+
+<section id="education">
+ <h2 class="rv up">Education &amp; <span>languages</span></h2>
+ <div class="two">
+  <div class="box rv lf"><h3>Bachelor of Computer and Artificial Intelligence in Data Science</h3><div class="co">Cairo University</div><div class="meta">Sep 2022 – Jul 2026</div><p class="meta" style="margin-top:10px">Coursework: Database Systems, Data Mining, Applied Data Science, ML Systems Design, Apache Spark. Graduation project: AI-based Educational Platform.</p><span class="score">Cumulative grade: Very Good · Graduation project: Excellent</span></div>
+  <div class="box rv rt" id="langbox"><h3>Languages</h3><div class="lang"><span>Arabic · Native</span><span>English · B2</span></div><h3 style="margin-top:26px">Training &amp; certifications</h3><p class="meta">Getting Started with Deep Learning (NVIDIA DLI) · AI &amp; Data Science Training (ITI) · NLP Training (NTI) · AI &amp; Data Science Certificate (Machinfy) · AI Analyst Trainee (IBM Egypt)</p></div>
+ </div>
+</section>
+
+<section id="contact">
+ <h2 class="rv up">Let's <span>connect</span></h2>
+ <div class="contact">
+  <div class="rv lf">
+   <a class="ci" href="mailto:yelgendy689@gmail.com"><em>✉️</em><div><small>Email</small>yelgendy689@gmail.com</div></a>
+   <a class="ci" href="tel:+201006918011"><em>📞</em><div><small>Phone</small>+20 100 691 8011</div></a>
+   <div class="ci"><em>📍</em><div><small>Location</small>Sheikh Zayed City, Egypt</div></div>
+   <div class="ci"><em>🟢</em><div><small>Availability</small>Open to junior roles · Military service: exempted</div></div>
+   <a class="ci" href="https://github.com/Youssifmohamed20" target="_blank" rel="noopener"><em>💻</em><div><small>GitHub</small>github.com/Youssifmohamed20</div></a>
+   <a class="ci" href="https://linkedin.com/in/youssef-elgendy" target="_blank" rel="noopener"><em>🔗</em><div><small>LinkedIn</small>linkedin.com/in/youssef-elgendy</div></a>
+  </div>
+  <div class="pulse rv rt"><i></i><i></i><i></i><b>YM</b></div>
+ </div>
+</section>
+</main>
+<footer>© 2026 Youssif Mohamed · Junior Data Scientist</footer>
+
+<script>
+// loader
+setTimeout(()=>document.getElementById('loader').classList.add('hide'),2000);
+
+// data
+const skills=[["Python",90],["SQL & Database Systems",80],["pandas & NumPy",88],["scikit-learn",85],["EDA & Statistical Analysis",85],["Feature Engineering",82],["Data Visualization",80],["NLP & Arabic NLP",78],["Apache Spark & MLlib",65],["Deep Learning",60]];
+const techs=["Python","SQL","pandas","NumPy","scikit-learn","Apache Spark","Spark MLlib","Jupyter Notebook","Google Colab","VS Code","GitHub","Data Cleaning","Data Preprocessing","EDA","Statistical Analysis","Data Visualization","Supervised Learning","Classification","Regression","Feature Engineering","ML Pipelines","Model Training","Model Evaluation","Model Validation","Tokenization","Vectorization","Text Classification","Retrieval-Based NLP","Arabic NLP","Data Mining","Database Systems","ChatGPT","Claude","Gemini","Codex"];
+const orgs=["Cairo University","ITI","NTI","NVIDIA DLI","IBM Egypt","Machinfy"];
+document.getElementById('sk').innerHTML=skills.map(s=>`<div class="rv up"><div><span>${s[0]}</span><span>${s[1]}%</span></div><div class="track"><div class="fill" data-w="${s[1]}"></div></div></div>`).join('');
+document.getElementById('chips').innerHTML=techs.map(t=>`<span class="chip rv up">${t}</span>`).join('');
+const m=orgs.concat(orgs).concat(orgs).concat(orgs).map(o=>`<span>${o}</span>`).join('');
+document.getElementById('mq').innerHTML=m;
+
+// scroll reveal + skill bars
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  e.target.classList.add('in');
+  e.target.querySelectorAll('.fill').forEach(f=>{f.style.width=f.dataset.w+'%';setTimeout(()=>f.classList.add('done'),1450)});
+  io.unobserve(e.target);
+}),{threshold:.15});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(el.classList.contains('chip')?(i%12)*40:0)+'ms';io.observe(el)});
+// hero items should appear after loader
+document.querySelectorAll('.hero .rv').forEach((el,i)=>{el.style.transitionDelay=(2.1+i*.15)+'s'});
+
+// cursor
+const dot=document.getElementById('dot'),ring=document.getElementById('ring');
+let mx=-100,my=-100,rx=-100,ry=-100;
+addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px)`});
+(function loop(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;ring.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(loop)})();
+document.querySelectorAll('a,.chip,.proj,.job,.btn').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('big'));el.addEventListener('mouseleave',()=>ring.classList.remove('big'))});
+
+// particle network
+const cv=document.getElementById('bg'),cx=cv.getContext('2d');
+const cols=['#5b4bff','#ff2e93','#22e4ff','#ffb627'];
+let W,H,P=[];
+function size(){W=cv.width=innerWidth;H=cv.height=innerHeight;P=Array.from({length:Math.min(110,Math.floor(W*H/14000))},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:Math.random()*1.8+.8,c:cols[Math.random()*4|0]}))}
+size();addEventListener('resize',size);
+(function draw(){
+  cx.clearRect(0,0,W,H);
+  P.forEach((p,i)=>{
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+    cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fillStyle=p.c;cx.fill();
+    for(let j=i+1;j<P.length;j++){
+      const q=P[j],d=Math.hypot(p.x-q.x,p.y-q.y);
+      if(d<130){cx.globalAlpha=(1-d/130)*.45;cx.strokeStyle=p.c;cx.lineWidth=.7;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(q.x,q.y);cx.stroke();cx.globalAlpha=1}
+    }
+  });
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
